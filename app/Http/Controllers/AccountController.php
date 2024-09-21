@@ -11,14 +11,14 @@ class AccountController extends Controller
 {
     public function index()
     {
-        $users = User::find(Auth::id()); // Get the current authenticated user
+        $users = User::find(Auth::id()); 
         $account = Account::where('user_id', Auth::id())->first();
         return view('account.home', compact('users', 'account'));
 
     }
     public function showDepositForm()
     {
-        return view('account.deposit'); // Create this view
+        return view('account.deposit'); 
     }
     public function deposit(Request $request)
     {
