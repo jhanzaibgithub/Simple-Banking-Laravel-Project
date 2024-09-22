@@ -2,12 +2,8 @@
 
 @section('content')
 
-
-
-
-
 <div class="container my-4 w-50">
-    <h3>Statement of account</h3>
+    <h3>Statement of Account</h3>
     <table class="table table-bordered">
         <thead class="table-light">
             <tr>
@@ -23,27 +19,34 @@
             @foreach($transactions as $transaction)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                  <td>{{ $transaction->created_at }}</td>
-                  <td>{{ $transaction->amount }}</td>
+                <td>{{ $transaction->created_at }}</td>
+                <td>{{ $transaction->amount }}</td>
 
-                <td>{{ $transaction->type }}</td>
+            
                 <td>
-                    @if($transaction->type == 'transfer')
+                    @if($transaction->receiver_email == Auth::user()->email)
+                        Received
+                    @else
+                        {{ $transaction->type }}
+                    @endif
+                </td>
+
+
+                <td>
+                    @if($transaction->receiver_email == Auth::user()->email)
+                        Received from <br> {{ $transaction->sender ? $transaction->sender->email : 'Unknown sender' }}
+                    @elseif($transaction->type == 'transfer')
                         Transfer to <br> {{ $transaction->receiver_email }}
-                        @else
-                        {{ $transaction->type }} <!-- Show the type for non-transfer transactions -->
-                        @endif
-                    </td>
+                    @else
+                        {{ $transaction->type }}
+                    @endif
+                </td>
+
                 <td>{{ $transaction->after_balance }}</td>
-
-
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
-
 
 @endsection
