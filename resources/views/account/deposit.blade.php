@@ -1,4 +1,4 @@
-{{-- resources/views/account/deposit.blade.php --}}
+
 @extends('layouts.app')
 
 @section('content')
