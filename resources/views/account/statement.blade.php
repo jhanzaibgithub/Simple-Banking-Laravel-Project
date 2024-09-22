@@ -17,7 +17,7 @@
         </thead>
         <tbody>
             @foreach($transactions as $transaction)
-            <tr>
+            <tr  style="background-color: white;">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $transaction->created_at }}</td>
                 <td>{{ $transaction->amount }}</td>
