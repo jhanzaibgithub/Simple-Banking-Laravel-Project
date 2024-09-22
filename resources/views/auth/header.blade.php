@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f7f7f7;
+             background-color: #b0bec5;
         }
         .form-container {
             background: white;
