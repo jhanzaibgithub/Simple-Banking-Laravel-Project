@@ -40,7 +40,6 @@ class AccountController extends Controller
         $transaction->before_balance = $beforeBalance;
         $transaction->after_balance = $account->balance;
         $transaction->save();
-
         return redirect('/home')->with('success', 'Deposit successful!');
     }
 
